@@ -61,7 +61,8 @@ app.post('/api/:metodo', (req, res) => {
   proxyReq.write(body);
   proxyReq.end();
 });
-
+const path = require('path');
+app.use(express.static(path.join(__dirname, 'public')));
 app.listen(PORT, () => {
   console.log(`bman proxy avviato su porta ${PORT} → ${BMAN_DOMAIN}:${BMAN_PORT}`);
 });
